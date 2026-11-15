@@ -28,16 +28,14 @@
 }
 
 /* =====================================
-   СЕТКА КОЛОНОК (ИСПРАВЛЕНО ДЛЯ JS)
+   СЕТКА КОЛОНОК (СТРОГО 3 В РЯД НА ПК)
 ===================================== */
 
-.products-grid, 
-#productsGrid { /* Добавлен ID из JS-скрипта */
+.products-grid,
+#productsGrid,
+.catalog-grid {
     display: grid;
-
-    /* Три колонки на широком экране */
     grid-template-columns: repeat(3, minmax(0, 1fr));
-
     gap: 28px;
     align-items: stretch;
 }
@@ -46,9 +44,10 @@
    КАРТОЧКА ТОВАРА
 ===================================== */
 
-.product-card {
+.product-card1 {
     display: flex;
     flex-direction: column;
+    width: 100%;
     min-width: 0;
     overflow: hidden;
 
@@ -57,15 +56,11 @@
     color: #30251d;
 
     box-shadow: 0 8px 24px rgb(0 0 0 / 20%);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-
-    height:auto;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    height: auto;
 }
 
-.product-card:hover {
+.product-card1:hover {
     transform: translateY(-5px);
     box-shadow: 0 14px 30px rgb(0 0 0 / 30%);
 }
@@ -73,7 +68,6 @@
 .product-image-wrapper {
     position: relative;
     overflow: hidden;
-
     aspect-ratio: 4 / 5;
     background: #e5d8c6;
 }
@@ -83,32 +77,26 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-
     transition: transform 0.35s ease;
 }
 
-.product-card:hover .product-image {
+.product-card1:hover .product-image {
     transform: scale(1.035);
 }
 
-/* Если фотография не найдена (ИСПРАВЛЕНО) */
 .product-image-wrapper.image-missing::after {
     content: "Фотография недоступна";
-
     position: absolute;
     inset: 0;
-
     display: grid;
     place-items: center;
-
     padding: 12px;
     color: #65574b;
     text-align: center;
     font-size: 14px;
-    background: #e5d8c6; /* Цвет заглушки */
+    background: #e5d8c6;
 }
 
-/* Скрываем дефолтную иконку битого изображения в браузере */
 .product-image-wrapper.image-missing .product-image {
     opacity: 0;
 }
@@ -140,9 +128,7 @@
     line-height: 1;
     cursor: pointer;
 
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease;
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .favorite-button:hover {
@@ -167,24 +153,20 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-
     padding: 18px;
 }
 
 .product-name {
     margin: 0 0 10px;
-
     color: #30251d;
     font-size: 17px;
     font-weight: 700;
     line-height: 1.4;
-
     overflow-wrap: anywhere;
 }
 
 .product-article {
     margin: 0 0 16px;
-
     color: #786b5e;
     font-size: 13px;
     line-height: 1.5;
@@ -193,7 +175,6 @@
 .product-price {
     margin: auto 0 0;
     padding-top: 8px;
-
     color: #355744;
     font-size: 22px;
     font-weight: 700;
@@ -201,47 +182,56 @@
 }
 
 /* =====================================
-   ПЛАНШЕТЫ: ДВЕ КОЛОНКИ (ИСПРАВЛЕНО ДЛЯ JS)
+   ТЕЛЕФОНЫ: РОВНО 2 ТОВАРА В РЯД
 ===================================== */
 
-@media (max-width: 900px) {
-    .products-grid,
-    #productsGrid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 20px;
-    }
-}
-
-/* =====================================
-   ТЕЛЕФОНЫ: ОДНА КОЛОНКА (ИСПРАВЛЕНО ДЛЯ JS)
-===================================== */
-
-@media (max-width: 520px) {
+@media (max-width: 600px) {
     .catalog {
-        width: 92%;
-        margin: 26px auto;
+        width: 94%;
+        margin: 20px auto;
     }
 
     .catalog-heading {
-        margin-bottom: 22px;
+        margin-bottom: 18px;
     }
 
     .products-grid,
-    #productsGrid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 20px;
+    #productsGrid,
+    .catalog-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .product-card1 {
+        border-radius: 12px;
+    }
+
+    .favorite-button {
+        top: 8px;
+        right: 8px;
+        width: 34px;
+        height: 34px;
+        font-size: 19px;
     }
 
     .product-info {
-        padding: 16px;
+        padding: 10px;
     }
 
     .product-name {
-        font-size: 16px;
+        font-size: 14px;
+        margin-bottom: 6px;
+        line-height: 1.25;
+    }
+
+    .product-article {
+        font-size: 11px;
+        margin-bottom: 10px;
     }
 
     .product-price {
-        font-size: 21px;
+        font-size: 17px;
+        padding-top: 4px;
     }
 }
 
@@ -250,7 +240,7 @@
 ===================================== */
 
 @media (prefers-reduced-motion: reduce) {
-    .product-card,
+    .product-card1,
     .product-image,
     .favorite-button {
         transition: none;
