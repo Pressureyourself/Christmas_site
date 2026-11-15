@@ -386,19 +386,74 @@ main {
 .header .buy-btn-left:hover {
     background-color: crimson !important;
 }
-
-/* В конце файла style.css или products.css */
-@media (max-width: 768px) {
-    .catalog-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 карточки в ряд на планшетах и крупных телефонах */
-        gap: 12px;
-        padding: 10px;
-    }
+/* 1. КОМПЬЮТЕР И ПЛАНШЕТЫ (от 481px и шире) */
+/* Карточки НЕ сжимаются меньше 240px — при сужении окна они просто переносятся на строку ниже */
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
+/* На компьютере баннер "Игрушки" и карточка контактов тоже не сжимаются и не растягиваются */
+.catalog-button {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+main .product-card {
+    max-width: 450px !important;
+    width: 100% !important;
+}
+
+/* 2. ТОЛЬКО РЕАЛЬНЫЕ ТЕЛЕФОНЫ (экраны уже 480px) */
 @media (max-width: 480px) {
+    /* Строго 2 карточки в ряд только на смартфоне */
     .catalog-grid {
-        grid-template-columns: 1fr; /* 1 крупная карточка в ряд на обычных смартфонах */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .catalog-grid .product-card {
+        padding: 10px;
+    }
+
+    .catalog-grid .product-card h3 {
+        font-size: 14px;
+    }
+
+    .catalog-grid .product-card img {
+        height: 140px;
+        object-fit: cover;
+    }
+
+    /* Главная страница на телефоне */
+    .catalog-button {
+        max-width: 340px;
+        height: 220px;
+    }
+
+    /* Квадратный блок контактов на телефоне */
+    main .product-card {
+        max-width: 320px !important;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* Шапка сайта на телефоне */
+    .header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px 10px;
+        text-align: center;
+    }
+
+    .hdr {
+        font-size: 24px;
+        margin: 0;
     }
 }
