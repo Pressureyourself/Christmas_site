@@ -386,3 +386,19 @@ main {
 .header .buy-btn-left:hover {
     background-color: crimson !important;
 }
+
+/* В конце файла style.css или products.css */
+@media (max-width: 768px) {
+    .catalog-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 карточки в ряд на планшетах и крупных телефонах */
+        gap: 12px;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .catalog-grid {
+        grid-template-columns: 1fr; /* 1 крупная карточка в ряд на обычных смартфонах */
+    }
+}
