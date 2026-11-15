@@ -49,7 +49,6 @@
 .product-card {
     display: flex;
     flex-direction: column;
-
     min-width: 0;
     overflow: hidden;
 
@@ -62,6 +61,8 @@
     transition:
         transform 0.25s ease,
         box-shadow 0.25s ease;
+
+    height:auto;
 }
 
 .product-card:hover {
