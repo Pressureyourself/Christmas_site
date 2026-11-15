@@ -406,57 +406,6 @@ main .product-card {
     max-width: 450px !important;
     width: 100% !important;
 }
-
-/* 2. ТОЛЬКО РЕАЛЬНЫЕ ТЕЛЕФОНЫ (экраны уже 480px) */
-@media (max-width: 600px) {
-    /* Строго 2 карточки в ряд только на смартфоне */
-    .catalog-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        padding: 10px;
-    }
-
-    .catalog-grid .product-card {
-        padding: 10px;
-    }
-
-    .catalog-grid .product-card h3 {
-        font-size: 14px;
-    }
-
-    .catalog-grid .product-card img {
-        height: 140px;
-        object-fit: cover;
-    }
-
-    /* Главная страница на телефоне */
-    .catalog-button {
-        max-width: 340px;
-        height: 220px;
-    }
-
-    /* Квадратный блок контактов на телефоне */
-    main .product-card {
-        max-width: 320px !important;
-        aspect-ratio: 1 / 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    /* Шапка сайта на телефоне */
-    .header {
-        flex-direction: column;
-        gap: 10px;
-        padding: 15px 10px;
-        text-align: center;
-    }
-
-    .hdr {
-        font-size: 24px;
-        margin: 0;
-    }
-}
 /* Закрываем оборванную шапку из конца вашего файла */
 .header {
     position: relative !important;
@@ -505,7 +454,7 @@ main .product-card {
 
     .catalog-button {
         max-width: 340px;
-        height: 220px; /* Фиксированная высота, чтобы картинка не вытягивалась */
+        height: 220px;
     }
 
     .catalog-overlay span {
@@ -521,19 +470,27 @@ main .product-card {
         padding: 15px 10px !important;
     }
 
-    /* 4. Страница контактов (contacts.html): компактный квадратный блок */
+    /* 4. Страница контактов (contacts.html): аккуратная карточка и надпись «Связаться с нами» */
     main .product-card {
-        max-width: 310px !important;
-        width: 90% !important;
-        aspect-ratio: 1 / 1;
-        padding: 20px !important;
+        max-width: 320px !important;
+        width: 92% !important;
+        aspect-ratio: auto !important;
+        padding: 20px 15px !important;
         display: flex;
         flex-direction: column;
         justify-content: center;
     }
 
+    main .product-card h2 {
+        font-size: 20px !important;
+        margin-bottom: 14px !important;
+        line-height: 1.2 !important;
+    }
+
     main .product-card p {
         font-size: 14px !important;
+        margin-bottom: 10px !important;
+        line-height: 1.35 !important;
         word-break: break-word;
     }
 
