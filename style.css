@@ -457,3 +457,94 @@ main .product-card {
         margin: 0;
     }
 }
+/* Закрываем оборванную шапку из конца вашего файла */
+.header {
+    position: relative !important;
+    display: block !important;
+    text-align: center;
+}
+
+/* ==========================================================================
+   СЕТКА КАТАЛОГА: СТРОГО 3 В РЯД НА ПК
+   ========================================================================== */
+.catalog-grid,
+.products-grid,
+#productsGrid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 30px !important;
+    padding: 40px 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* ==========================================================================
+   АДАПТАЦИЯ СТРОГО ПОД ТЕЛЕФОНЫ (Экраны до 600px)
+   ========================================================================== */
+@media (max-width: 600px) {
+    /* 1. Шапка: уменьшаем огромный шрифт, чтобы заголовок влезал в экран */
+    .header {
+        padding: 35px 15px;
+    }
+
+    .hdr {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    /* 2. Главная страница (index.html): убираем сильное растяжение */
+    .intro {
+        font-size: 20px;
+        padding: 20px 15px 10px;
+    }
+
+    .catalog-preview {
+        padding: 20px 15px;
+    }
+
+    .catalog-button {
+        max-width: 340px;
+        height: 220px; /* Фиксированная высота, чтобы картинка не вытягивалась */
+    }
+
+    .catalog-overlay span {
+        font-size: 30px;
+    }
+
+    /* 3. Каталог и Избранное: строго 2 карточки в ряд */
+    .catalog-grid,
+    .products-grid,
+    #productsGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        padding: 15px 10px !important;
+    }
+
+    /* 4. Страница контактов (contacts.html): компактный квадратный блок */
+    main .product-card {
+        max-width: 310px !important;
+        width: 90% !important;
+        aspect-ratio: 1 / 1;
+        padding: 20px !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    main .product-card p {
+        font-size: 14px !important;
+        word-break: break-word;
+    }
+
+    /* 5. Кнопка музыки чуть компактнее в углу */
+    .music-player-container {
+        bottom: 15px;
+        left: 15px;
+    }
+
+    .music-btn {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+}
