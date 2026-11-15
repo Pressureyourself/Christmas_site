@@ -408,7 +408,7 @@ main .product-card {
 }
 
 /* 2. ТОЛЬКО РЕАЛЬНЫЕ ТЕЛЕФОНЫ (экраны уже 480px) */
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     /* Строго 2 карточки в ряд только на смартфоне */
     .catalog-grid {
         grid-template-columns: repeat(2, 1fr);
