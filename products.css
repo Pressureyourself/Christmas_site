@@ -1,0 +1,257 @@
+/* =====================================
+   ОСНОВНОЙ КОНТЕЙНЕР КАТАЛОГА
+===================================== */
+
+.catalog {
+    width: min(1200px, 94%);
+    margin: 40px auto;
+}
+
+.catalog-heading {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.catalog-heading h1 {
+    margin: 0 0 12px;
+    color: #f5e3c1;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(28px, 4vw, 42px);
+    text-shadow: 0 2px 12px rgb(0 0 0 / 40%);
+}
+
+.catalog-heading p {
+    margin: 0;
+    color: #f0dfca;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* =====================================
+   СЕТКА КОЛОНОК (ИСПРАВЛЕНО ДЛЯ JS)
+===================================== */
+
+.products-grid, 
+#productsGrid { /* Добавлен ID из JS-скрипта */
+    display: grid;
+
+    /* Три колонки на широком экране */
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 28px;
+    align-items: stretch;
+}
+
+/* =====================================
+   КАРТОЧКА ТОВАРА
+===================================== */
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    overflow: hidden;
+
+    border-radius: 16px;
+    background: #f7f1e7;
+    color: #30251d;
+
+    box-shadow: 0 8px 24px rgb(0 0 0 / 20%);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 30px rgb(0 0 0 / 30%);
+}
+
+.product-image-wrapper {
+    position: relative;
+    overflow: hidden;
+
+    aspect-ratio: 4 / 5;
+    background: #e5d8c6;
+}
+
+.product-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    transition: transform 0.35s ease;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.035);
+}
+
+/* Если фотография не найдена (ИСПРАВЛЕНО) */
+.product-image-wrapper.image-missing::after {
+    content: "Фотография недоступна";
+
+    position: absolute;
+    inset: 0;
+
+    display: grid;
+    place-items: center;
+
+    padding: 12px;
+    color: #65574b;
+    text-align: center;
+    font-size: 14px;
+    background: #e5d8c6; /* Цвет заглушки */
+}
+
+/* Скрываем дефолтную иконку битого изображения в браузере */
+.product-image-wrapper.image-missing .product-image {
+    opacity: 0;
+}
+
+/* =====================================
+   КНОПКА ИЗБРАННОГО
+===================================== */
+
+.favorite-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 1;
+
+    display: grid;
+    place-items: center;
+
+    width: 42px;
+    height: 42px;
+    padding: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgb(255 255 255 / 95%);
+    color: #a64b4b;
+
+    font-size: 25px;
+    line-height: 1;
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.favorite-button:hover {
+    transform: scale(1.08);
+}
+
+.favorite-button.is-favorite {
+    background: #a64b4b;
+    color: white;
+}
+
+.favorite-button:focus-visible {
+    outline: 3px solid #c49a57;
+    outline-offset: 3px;
+}
+
+/* =====================================
+   ТЕКСТОВАЯ ЧАСТЬ
+===================================== */
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    padding: 18px;
+}
+
+.product-name {
+    margin: 0 0 10px;
+
+    color: #30251d;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.4;
+
+    overflow-wrap: anywhere;
+}
+
+.product-article {
+    margin: 0 0 16px;
+
+    color: #786b5e;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.product-price {
+    margin: auto 0 0;
+    padding-top: 8px;
+
+    color: #355744;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* =====================================
+   ПЛАНШЕТЫ: ДВЕ КОЛОНКИ (ИСПРАВЛЕНО ДЛЯ JS)
+===================================== */
+
+@media (max-width: 900px) {
+    .products-grid,
+    #productsGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+}
+
+/* =====================================
+   ТЕЛЕФОНЫ: ОДНА КОЛОНКА (ИСПРАВЛЕНО ДЛЯ JS)
+===================================== */
+
+@media (max-width: 520px) {
+    .catalog {
+        width: 92%;
+        margin: 26px auto;
+    }
+
+    .catalog-heading {
+        margin-bottom: 22px;
+    }
+
+    .products-grid,
+    #productsGrid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+    }
+
+    .product-info {
+        padding: 16px;
+    }
+
+    .product-name {
+        font-size: 16px;
+    }
+
+    .product-price {
+        font-size: 21px;
+    }
+}
+
+/* =====================================
+   УВАЖАЕМ НАСТРОЙКУ УМЕНЬШЕНИЯ АНИМАЦИИ
+===================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .product-card,
+    .product-image,
+    .favorite-button {
+        transition: none;
+    }
+}

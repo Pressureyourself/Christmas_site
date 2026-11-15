@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry christmas site</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="products.css">
+</head>
+<body>
+    <!-- Аккуратная кнопка управления музыкой -->
+<div class="music-player-container">
+    <button id="musicBtn" class="music-btn" aria-label="Включить музыку">🔈 Включить музыку</button>
+    <!-- Сам элемент аудио, который скрыт. loop заставляет музыку играть по кругу -->
+    <audio id="bgMusic" src="music.mp3" loop></audio>
+</div>
+
+    <header class="header">
+        <h1 class="hdr"> Merry Christmas!!!</h1>
+    </header>
+    <main>
+        <section class="intro">
+            <h2>Добро пожаловать!</h2>
+            <p>Здесь вы можете ознакомиться с 
+                ассортиментом елочных игрушек Goodwill</p>
+        </section>
+        <section class="catalog-preview">
+            <a href="shop.html" class="catalog-button">
+            <img src="fonts/decorations.jpg" alt="Елочные игрушки">
+            <div class="catalog-overlay">
+                <span>Игрушки</span>
+            </div>
+            </a>
+        </section>
+
+    </main>
+    
+
+    <footer class="footer">
+        <p>Связаться с нами:</p>
+        <a href="tel:+79826865933">
+            📞+79826865933
+        </a>
+    </footer>
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог игрушек Goodwill</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Управление музыкой -->
+    <div class="music-player-container">
+        <button id="musicBtn" class="music-btn" aria-label="Включить музыку">🔈 Включить музыку</button>
+        <audio id="bgMusic" src="music.mp3" loop></audio>
+    </div>
+        <header class="header">
+        <!-- НОВАЯ КНОПКА: Ссылка на контакты с иконкой тележки строго слева -->
+        <a href="contacts.html" class="music-btn buy-btn-left" style="text-decoration: none; display: inline-block;">🛒 Купить</a>
+
+        <!-- Заголовок каталога (Остаётся чётко по центру экрана) -->
+        <h1 class="hdr">Каталог Goodwill</h1>
+        
+        <!-- Кнопка избранного (Остаётся строго справа) -->
+        <a href="favourite.html" class="music-btn" style="text-decoration: none; display: inline-block; background-color: crimson; margin: 0;">❤️ Избранное</a>
+    </header>
+
+    <main>
+        <section class="intro">
+            <h2>Новый год с Goodwill</h2>
+            <p>Здесь скоро будет еще больше праздничных украшений!</p>
+        </section>
+
+        <!-- Сетка каталога (Оставляем пустой, Flexbox-стили из CSS всё выровняют) -->
+        <section class="catalog-grid"></section>
+    </main>
+
+    <footer class="footer">
+        <a href="index.html">⬅ Вернуться на главную</a>
+    </footer>
+
+    <!-- Подключаем наш единый script.js -->
+    <script src="script.js"></script>
+</body>
+</html>

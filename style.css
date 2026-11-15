@@ -1,0 +1,388 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+}
+/* Шапка сайта */
+.header {
+    /* ИСПРАВЛЕНО: возвращена оригинальная рабочая ссылка на новогоднюю картинку */
+    background-image: url("https://media.tproger.ru/uploads/2018/12/new-year-cover.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: 2px solid #b8e8b8;
+    padding: 60px 0;
+    text-align: center;
+}
+
+
+/* ШРИФТ */
+@font-face {
+    font-family: "Above the sky";
+    src: url("fonts/gullever-font.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.hdr {
+    font-size: 54px;
+    font-weight: normal;
+    color: darkgreen;
+    font-family: "Above the sky", cursive, sans-serif;
+    text-shadow: 
+        -2px -2px 0 #fff,  
+         2px -2px 0 #fff,
+        -2px  2px 0 #fff,
+         2px  2px 0 #fff;
+}
+
+/* ТЕКСТ INTRO */
+.intro {
+    text-align: center;
+    font-size: 29px;
+    font-weight: normal;
+    color: rgb(198, 142, 1);
+    font-family: "Above the sky", cursive, sans-serif;
+    text-shadow: 0px 2px 0 #fff;
+    padding: 30px 20px 10px 20px;
+}
+
+main {
+    background-image: url("fonts/back3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    flex-grow: 1;
+}
+
+/* КНОПКА НА ГЛАВНОЙ СТРАНИЦЕ */
+.catalog-preview {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.catalog-button {
+    position: relative;
+    display: block;
+    max-width: 700px;
+    height: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 20px;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.catalog-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.catalog-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.35);
+    transition: 0.3s;
+}
+
+.catalog-overlay span {
+    color: rgb(239, 216, 103);
+    font-size: 42px;
+    font-weight: bold;
+    font-family: "Above the sky", cursive, sans-serif;
+}
+
+.catalog-button:hover img {
+    transform: scale(1.08);
+    filter: brightness(0.8);
+}
+
+.catalog-button:hover .catalog-overlay {
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.catalog-button:hover .catalog-overlay span {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   ИДЕАЛЬНАЯ СЕТКА КАТАЛОГА (Строго плитка 3 в ряд ВСЕГДА, без переносов вниз)
+   ========================================================================== */
+/* ИДЕАЛЬНАЯ СИММЕТРИЧНАЯ СЕТКА */
+.catalog-grid {
+    display: grid;
+    /* Строго 3 равные колонки */
+    grid-template-columns: repeat(3, 1fr); 
+    
+    /* Промежуток МЕЖДУ карточками равен 30 пикселям */
+    gap: 30px; 
+    
+    /* 🌟 Главный секрет: внутренние отступы СЛЕВА и СПРАВА от края страницы 
+       теперь ТОЖЕ равны ровно 30 пикселям. Расстояния стали абсолютно одинаковыми! */
+    padding: 40px 30px; 
+    
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+
+/* Карточка товара */
+.product-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Карточки будут строго одной высоты в ряду */
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+/* ПОДСТРАИВАЕМЫЙ КОНТЕЙНЕР КАРТИНКИ */
+.product-image-container {
+    width: 100%; 
+    /* Пропорция высоты к ширине теперь всегда идеальные 4 к 5.
+       При сужении браузера картинка будет гибко и плавно сжиматься сама! */
+    aspect-ratio: 4 / 5; 
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+
+
+/* Сердечко */
+.favorite-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(255, 255, 255, 0.85);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #cc3333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.favorite-btn:hover {
+    background: #fff;
+    transform: scale(1.1);
+}
+/* Текст поверх картинки (плавно уменьшается при сжатии страницы) */
+.product-overlay-text {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 70%, rgba(0, 0, 0, 0) 100%);
+    color: #fff;
+    padding: 4%; /* Отступы теперь в процентах, чтобы тоже сжиматься */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.product-overlay-text h3 {
+    margin: 0 0 6px 0;
+    /* Магия clamp: шрифт будет плавно уменьшаться от 1.15rem до 0.8rem в зависимости от экрана */
+    font-size: clamp(0.8rem, 1.5vw, 1.15rem); 
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.product-overlay-text .sku {
+    margin: 0;
+    font-size: clamp(0.65rem, 1.1vw, 0.8rem); /* Адаптивный размер артикула */
+    opacity: 0.75;
+}
+
+/* Цены в подвале карточки (тоже плавно уменьшаются) */
+.product-info-footer {
+    padding: 4% 5%; /* Отступы адаптируются под размер карточки */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fafafa;
+    border-top: 1px solid #eee;
+    margin-top: auto;
+}
+
+.price {
+    font-size: clamp(0.9rem, 1.8vw, 1.3rem); /* Цена сжимается и не ломает строку */
+    font-weight: 700;
+    color: #107c41;
+}
+
+.price-original {
+    font-size: clamp(0.7rem, 1.2vw, 0.9rem); /* Евро-цена тоже уменьшается */
+    color: #777;
+    background-color: #eee;
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+
+.justify-center {
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* ФУТЕР И СНЕГ */
+.footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 20px;
+    background: #fff;
+    border-top: 1px solid #eee;
+}
+
+.footer a {
+    color: darkgreen;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.snowflake-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.snowflake {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 3px rgba(255,255,255,0.8));
+    animation: fall linear infinite;
+    top: -10px;
+}
+
+@keyframes fall {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.8; }
+    100% { transform: translateY(105vh) translateX(50px); opacity: 0; }
+}
+
+/* Контейнер для музыкальной кнопки */
+.music-player-container {
+    position: fixed;
+    bottom: 25px;
+    left: 30px; /* Выровнено идеально по левому краю сетки каталога */
+    z-index: 10000; /* Всегда поверх снега и карточек */
+}
+
+/* Красивая новогодняя кнопка */
+.music-btn {
+    background-color: darkgreen;
+    color: white;
+    border: 2px solid #b8e8b8;
+    border-radius: 20px;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.music-btn:hover {
+    background-color: crimson; /* Меняет цвет на красный при наведении */
+    transform: scale(1.05);
+}
+
+.music-btn.playing {
+    background-color: crimson;
+    box-shadow: 0 0 15px rgba(220, 20, 60, 0.6);
+}
+
+/* Стили для активного (занятого) сердечка, добавленного через JS */
+.favorite-btn.is-favorite {
+    background: #fff;
+    color: #cc3333;
+    animation: heartBeat 0.3s ease-in-out;
+}
+
+/* Красивая микро-анимация при клике на сердечко */
+@keyframes heartBeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+/* Выравниваем заголовок шапки и кнопку на одной линии */
+/* Возвращаем заголовок строго по центру, а кнопку сдвигаем вправо */
+.header {
+    position: relative !important; /* Родтельский контейнер для отсчета координат */
+    display: block !important;     /* Убираем flex с родителя, чтобы текст не смещался */
+    text-align: center !important; /* Центрируем заголовок по старинке */
+    padding: 60px 20px !important;
+}
+
+/* Оставляем надпись чётко по центру */
+.header .hdr {
+    display: inline-block !important;
+    margin: 0 auto !important;
+}
+
+/* Настраиваем позицию кнопки «Избранное» справа от текста */
+.header .music-btn {
+    position: absolute !important;
+    top: 50% !important;           /* Выравниваем ровно по центру высоты шапки */
+    transform: translateY(-50%) !important; /* Идеальная вертикальная центровка */
+    right: 40px !important;        /* Отступ от правого края страницы */
+    margin: 0 !important;
+}
+/* Перекрашиваем главный заголовок на странице избранного в лёгкий красный цвет */
+.header h1.hdr {
+    color: rgb(198, 142, 21); /* Меняем darkgreen на приятный лёгкий красный */
+}
+
+/* Фиксируем аккуратный размер для левой кнопки «Купить» */
+.header .buy-btn-left {
+    position: absolute !important;
+    top: 50% !important;                   /* Выравнивание по центру высоты шапки */
+    transform: translateY(-50%) !important; /* Идеальная вертикальная центровка */
+    left: 40px !important;                 /* Отступ от левого края экрана */
+    margin: 0 !important;
+    width: auto !important;                /* ИСПРАВЛЕНО: запрещаем кнопке растягиваться во всю ширину */
+    max-width: 150px !important;           /* Ограничиваем максимальную ширину */
+    padding: 10px 18px !important;         /* Компактные внутренние отступы, как у кнопки музыки */
+    display: inline-block !important;      /* Делаем строчно-блочным элементом */
+    text-align: center !important;
+    background-color: darkgreen !important;
+}
+
+/* Эффект наведения */
+.header .buy-btn-left:hover {
+    background-color: crimson !important;
+}
