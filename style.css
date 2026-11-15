@@ -152,7 +152,7 @@ main {
     transition: transform 0.3s ease;
     display: flex;
     flex-direction: column;
-    height: 100%; /* Карточки будут строго одной высоты в ряду */
+    height: auto; /* Карточки будут строго одной высоты в ряду */
 }
 
 .product-card:hover {
