@@ -455,7 +455,16 @@ main.contacts-page {
         align-items: center !important;
         gap: 10px !important;
     }
-
+    .contacts-page{
+        height: 350px;
+        min-height: unset;
+        align-items: center;
+        justify-content: center;
+    }
+    .contacts-box{
+        height: auto;
+        max-width: 300px;
+    }
     .hdr {
         font-size: 30px !important;
         line-height: 1.2 !important;
