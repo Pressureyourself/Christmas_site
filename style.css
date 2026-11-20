@@ -446,3 +446,95 @@ main.contacts-page {
 /* ==========================================================================
    ЕДИНАЯ АДАПТАЦИЯ СТРОГО ПОД ТЕЛЕФОНЫ (Экраны до 600px)
    ========================================================================== */
+@media (max-width: 768px) {
+    /* 1. Шапка на телефоне: кнопки аккуратно встают под заголовок, не наезжая на текст */
+    .header {
+        padding: 25px 15px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 10px !important;
+    }
+    .contacts-page{
+        height: 350px;
+        min-height: unset;
+        align-items: center;
+        justify-content: center;
+    }
+    .contacts-box{
+        height: auto;
+        max-width: 300px;
+    }
+    .hdr {
+        font-size: 30px !important;
+        line-height: 1.2 !important;
+    }
+
+    .header .music-btn,
+    .header .buy-btn-left {
+        position: static !important;
+        transform: none !important;
+        padding: 8px 16px !important;
+        font-size: 13px !important;
+    }
+
+    /* 2. Главная страница (index.html) */
+    .intro {
+        font-size: 20px;
+        padding: 20px 15px 10px;
+    }
+
+    .catalog-preview {
+        padding: 20px 15px;
+    }
+
+    .catalog-button {
+        max-width: 340px;
+        height: 220px;
+    }
+
+    .catalog-overlay span {
+        font-size: 30px;
+    }
+
+    /* 3. Каталог и Избранное: строго 2 карточки в ряд */
+    .catalog-grid,
+    .products-grid,
+    #productsGrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        padding: 15px 10px !important;
+    }
+
+    /* 4. Страница контактов (contacts.html): строгий компактный блок */
+    .contacts-box {
+        width: 300px;
+        padding: 20px 16px;
+    }
+
+    .contacts-box h2 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .contacts-box p {
+        font-size: 13px;
+        word-break: break-word;
+    }
+
+    .contacts-box .contact-note {
+        font-size: 12px;
+    }
+
+    /* 5. Кнопка музыки в углу */
+    .music-player-container {
+        bottom: 15px;
+        left: 15px;
+    }
+
+    .music-btn {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+}
+
