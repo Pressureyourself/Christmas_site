@@ -450,7 +450,7 @@ main.contacts-page {
 @media (max-width: 767px) {
     .header .buy-btn-left {
         position: absolute !important;
-        top: 75% !important; /* Опустили кнопку ниже центра */
+        top: 150% !important; /* поднял кнопку вышк центра */
         transform: translateY(-50%) !important;
         left: 40px !important;
         right: auto !important;
