@@ -445,12 +445,12 @@ main.contacts-page {
 }
 
 /* ==========================================================================
-   ЕДИНАЯ АДАПТАЦИЯ СТРОГО ПОД ТЕЛЕФОНЫ (Экраны до 600px)
+АДАПТАЦИЯ ПОД ТЕЛЕФОН
    ========================================================================== */
 @media (max-width: 767px) {
     .header .buy-btn-left {
         position: absolute !important;
-        top: 140% !important; /* поднял кнопку вышк центра */
+        top: 50% !important; /* поднял кнопку вышк центра */
         transform: translateY(-50%) !important;
         left: 40px !important;
         right: auto !important;
