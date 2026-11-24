@@ -444,22 +444,68 @@ main.contacts-page {
     margin-bottom: 0;
 }
 
-/* ==========================================================================
-АДАПТАЦИЯ ПОД ТЕЛЕФОН
-   ========================================================================== */
-@media (max-width: 767px) {
-    .header .buy-btn-left {
-        position: absolute !important;
-        top:100% !important; /* поднял кнопку вышк центра */
-        transform: translateY(-50%) !important;
-        left: 40px !important;
-        right: auto !important;
-        margin: 0 !important;
-        width: auto !important;
-        max-width: 150px !important;
-        padding: 10px 18px !important;
-        display: inline-block !important;
+
+
+@media screen and (max-width: 600px) {
+
+    /* Шапка */
+    .header {
+        position: relative !important;
+
+        /* Меньше отступы сверху и снизу */
+        padding: 35px 12px 75px !important;
+
         text-align: center !important;
-        background-color: darkgreen !important;
+    }
+
+    /* Заголовок */
+    .header .hdr {
+        display: block !important;
+        font-size: clamp(30px, 8vw, 40px);
+        line-height: 1.2;
+    }
+
+    /* Левая кнопка */
+    .header .buy-btn-left {
+
+        position: absolute !important;
+
+        /* Прижимаем к нижнему краю */
+        top: auto !important;
+        bottom: 12px !important;
+
+        left: 12px !important;
+        right: auto !important;
+
+        transform: none !important;
+
+        width: auto !important;
+        max-width: none !important;
+
+        padding: 9px 12px !important;
+
+        font-size: 13px;
+    }
+
+    /* Правая кнопка */
+    .header .music-btn {
+
+        position: absolute !important;
+
+        top: auto !important;
+        bottom: 12px !important;
+
+        right: 12px !important;
+        left: auto !important;
+
+        transform: none !important;
+
+        width: auto !important;
+        max-width: none !important;
+
+        padding: 9px 12px !important;
+
+        font-size: 13px;
     }
 }
+
