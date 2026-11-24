@@ -384,22 +384,21 @@ main {
     margin: 0 auto;
     width: 100%;
 } 
-*/
 
-/* ==========================================================================
-   СТРАНИЦА КОНТАКТОВ (ПК)
-   ========================================================================== */
-main.contacts-page {
+ main.contacts-page {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    min-height: 100vh;
     padding: 30px 15px;
+    box-sizing: border-box;
 }
 
 .contacts-box {
     width: 400px;
     max-width: 100%;
-    height: fit-content;
+    margin: 0 auto;
     padding: 28px 24px;
     background: #ffffff;
     border-radius: 16px;
@@ -407,7 +406,9 @@ main.contacts-page {
     text-align: center;
     font-family: Arial, sans-serif;
     color: #222;
+    box-sizing: border-box;
 }
+
 
 .contacts-box h2 {
     color: darkgreen;
@@ -536,5 +537,11 @@ main.contacts-page {
         line-height: 1.1 !important;
         text-align: center !important;
         white-space: nowrap !important;
+    }
+}
+@media screen and (max-width: 600px){
+    .footer{
+        text-align: right;
+        padding:20px;
     }
 }
