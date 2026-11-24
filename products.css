@@ -1,4 +1,4 @@
-/* /* =====================================
+/* =====================================
    ОСНОВНОЙ КОНТЕЙНЕР КАТАЛОГА
 ===================================== */
 
@@ -38,6 +38,7 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 28px;
     align-items: stretch;
+    
 }
 
 /* =====================================
@@ -184,28 +185,69 @@
 /* =====================================
    ТЕЛЕФОНЫ: РОВНО 2 ТОВАРА В РЯД
 ===================================== */
+@media screen and (max-width: 600px) {
 
-@media (max-width: 600px) {
+    /* Контейнер каталога */
     .catalog {
-        width: 94%;
+        width: 100%;
         margin: 20px auto;
+        padding: 0 12px;
     }
 
+    /* Заголовок */
     .catalog-heading {
         margin-bottom: 18px;
     }
 
+    .catalog-heading h1 {
+        font-size: 28px;
+    }
+
+    .catalog-heading p {
+        font-size: 14px;
+    }
+
+    /* САМА СЕТКА */
     .products-grid,
     #productsGrid,
     .catalog-grid {
+
+        /* ДВА ТОВАРА В ОДНОМ РЯДУ */
         grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        /* Расстояние между товарами */
         gap: 10px;
+
+        /* Убираем большие отступы ПК */
+        padding: 0;
+
+        /* Занимаем всю ширину контейнера */
+        width: 100%;
+
+        /* Убираем ограничение ширины ПК */
+        max-width: none;
     }
 
+    /* Карточка товара */
     .product-card1 {
+        width: 100%;
+        min-width: 0;
         border-radius: 12px;
     }
 
+    /* Изображение */
+    .product-image-wrapper {
+        width: 100%;
+        aspect-ratio: 4 / 5;
+    }
+
+    .product-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Кнопка избранного */
     .favorite-button {
         top: 8px;
         right: 8px;
@@ -214,35 +256,27 @@
         font-size: 19px;
     }
 
+    /* Информация о товаре */
     .product-info {
         padding: 10px;
     }
 
+    /* Название */
     .product-name {
         font-size: 14px;
-        margin-bottom: 6px;
         line-height: 1.25;
+        margin-bottom: 6px;
     }
 
+    /* Артикул */
     .product-article {
         font-size: 11px;
         margin-bottom: 10px;
     }
 
+    /* Цена */
     .product-price {
         font-size: 17px;
         padding-top: 4px;
     }
 }
-
-/* =====================================
-   УВАЖАЕМ НАСТРОЙКУ УМЕНЬШЕНИЯ АНИМАЦИИ
-===================================== */
-
-@media (prefers-reduced-motion: reduce) {
-    .product-card1,
-    .product-image,
-    .favorite-button {
-        transition: none;
-    }
-} */
